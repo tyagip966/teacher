@@ -1,18 +1,11 @@
 package models
 
-type Teacher struct {
-	Name           string `json:"name"`
-	Age            string `json:"age"`
-	Department     string `json:"department"`
-	IsHead         bool   `json:"is_head"`
-	SchoolCode     int    `json:"school_code"`
-	IdentityNumber int    `json:"identityNumber"`
-}
+import "github.com/tyagip966/common-repo/models"
 
 type TeacherService interface {
-	AddTeacher(input Teacher) (*Teacher, error)
-	GetTeacher(id int) (*Teacher, error)
-	GetTeachers(schoolCode int) ([]Teacher, error)
-	DeleteTeacher(id int) (*Teacher, error)
-	UpdateTeacher(id int, input Teacher) (*Teacher, error)
+	AddTeacher(input models.Teacher) (*models.Teacher, error)
+	GetTeacher(id int) (*models.Teacher, error)
+	GetTeachers(schoolCode int) ([]models.Teacher, error)
+	DeleteTeacher(id int) (*models.Teacher, error)
+	UpdateTeacher(id int, input models.Teacher) (*models.Teacher, error)
 }
