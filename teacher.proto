@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package pb;
+
+message Teacher{
+    int64  ID     = 1;
+    string Name    =2;
+    int64 Age         =3;
+    string Department      =4;
+    bool IsHead    =5;
+    int64 SchoolCode    =6;
+    int64 IdentityNumber =7;
+}
+
+
+message AddTeacherRequest{
+    Teacher input =1;
+}
+
+message GetTeacherRequest{
+    int64 ID  = 1;
+}
+message DeleteTeacherRequest{
+    int64 ID  = 1;
+}
+message UpdateTeacherRequest{
+    int64 ID  = 1;
+    Teacher input =2;
+}
+message AddTeacherResponse{
+    Teacher teacher =1;
+}
+
+message GetTeachersRequest{
+    int64 SchoolCode = 1;
+}
+message GetTeachersResponse{
+    repeated Teacher teacher =1;
+}
+
+
+service TeacherService {
+    rpc AddTeacher (AddTeacherRequest) returns (AddTeacherResponse) {}
+    rpc GetTeacher (GetTeacherRequest) returns (AddTeacherResponse) {}
+    rpc UpdateTeacher (UpdateTeacherRequest) returns (AddTeacherResponse) {}
+    rpc DeleteTeacher (DeleteTeacherRequest) returns (AddTeacherResponse) {}
+    rpc GetTeachers (GetTeachersRequest) returns (GetTeachersResponse) {}
+}
